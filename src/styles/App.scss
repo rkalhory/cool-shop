@@ -1,0 +1,239 @@
+@import "variables.scss";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: samimDG, Tahoma, Arial;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: samimDG;
+  src: url('../assets/fonts/Samim-FD.eot');
+  src: url('../assets/fonts/Samim-FD.eot?#iefix') format('FontName-opentype'),
+  url('../assets/fonts/Samim-FD.woff') format('woff'),
+  url('../assets/fonts/Samim-FD.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: samimDG, Tahoma, Arial;
+  min-height: 100vh;
+  font-style: normal;
+  background: #fff;
+  color: #222;
+  direction: rtl;
+}
+
+::selection {
+  background: $primary-color;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: $primary-color;
+  color: #fff;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  transition: all .3s ease;
+  outline: none;
+  cursor: pointer;
+}
+
+button,button:focus{
+  outline: none;
+  cursor: pointer;
+}
+
+ul,ol{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.hidden{
+  display: none;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 1170px;
+  }
+  @media (min-width: 1280px) {
+      max-width: 1200px;
+  }
+
+}
+
+@-webkit-keyframes slideInDown{
+  from{
+    -webkit-transform:translate3d(0,-100%,0);
+    transform:translate3d(0,-100%,0);
+    visibility:visible
+  }
+  to{
+    -webkit-transform:translate3d(0,0,0);
+    transform:translate3d(0,0,0)
+  }
+}
+@keyframes slideInDown{
+  from{
+    -webkit-transform:translate3d(0,-100%,0);
+    transform:translate3d(0,-100%,0);
+    visibility:visible
+  }
+  to{
+    -webkit-transform:translate3d(0,0,0);
+    transform:translate3d(0,0,0)
+  }
+}
+
+.slideInDown{-webkit-animation-name:slideInDown;animation-name:slideInDown}
+
+.d-flex{display:-ms-flexbox;display:flex}
+.d-inline-flex{display:-ms-inline-flexbox;display:inline-flex}
+.justify-content-start{-ms-flex-pack:start;justify-content:flex-start}
+.justify-content-end{-ms-flex-pack:end;justify-content:flex-end}
+.justify-content-center{-ms-flex-pack:center;justify-content:center}
+.justify-content-between{-ms-flex-pack:justify;justify-content:space-between}
+.justify-content-around{-ms-flex-pack:distribute;justify-content:space-around}
+.align-items-start{-ms-flex-align:start;align-items:flex-start}
+.align-items-end{-ms-flex-align:end;align-items:flex-end}
+.align-items-center{-ms-flex-align:center;align-items:center}
+.align-items-baseline{-ms-flex-align:baseline;align-items:baseline}
+.align-items-stretch{-ms-flex-align:stretch;align-items:stretch}
+.align-content-start{-ms-flex-line-pack:start;align-content:flex-start}
+.align-content-end{-ms-flex-line-pack:end;align-content:flex-end}
+
+.overflow-hidden{
+  overflow: hidden;
+}
+.ltr{
+  direction: ltr;
+}
+.bg-grey{
+  background-color: $grey;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.mb-50{
+  margin-bottom: 50px;
+}
+
+.pb-80{
+  padding-bottom: 80px;
+  @media (max-width: 767px) {
+    padding-bottom: 50px;
+  }
+}
+
+.pt-80{
+  padding-top: 80px;
+  @media (max-width: 767px) {
+    padding-top: 50px;
+  }
+}
+.product-row{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px -20px;
+
+  &.mb-80{
+    margin-bottom: 80px;
+  }
+
+  .product-col{
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+    @media (min-width: 768px)and (max-width: 991px){
+      flex: 0 0 33.333%;
+      max-width: 33.333%;
+    }
+    @media (max-width: 767px){
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    @media (max-width: 500px){
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  .col-img{
+    flex: 0 0 30%;
+    max-width: 30%;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+  }
+  .col-info{
+    flex: 0 0 70%;
+    max-width: 70%;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+  }
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.row-10{
+  margin-bottom: -10px;
+  &>*{
+    display: block;
+    margin-bottom: 10px;
+  }
+}

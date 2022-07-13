@@ -1,0 +1,87 @@
+@import "src/styles/variables";
+
+
+//
+//@keyframes icon-shake{
+//  0%{
+//    -webkit-transform:scale(1.1) rotate(10deg);
+//    transform: scale(1.1) rotate(10deg);
+//  }
+//  50%{
+//    -webkit-transform:scale(1.1) rotate(-10deg);
+//    transform: scale(1.1) rotate(-10deg);
+//  }
+//  100%{
+//    -webkit-transform:scale(1.1) rotate(0);
+//    transform: scale(1.1) rotate(0);
+//  }
+//}
+@-webkit-keyframes swing{20%{-webkit-transform:rotate(15deg);transform:rotate(15deg)}40%{-webkit-transform:rotate(-10deg);transform:rotate(-10deg)}60%{-webkit-transform:rotate(5deg);transform:rotate(5deg)}80%{-webkit-transform:rotate(-5deg);transform:rotate(-5deg)}to{-webkit-transform:rotate(0deg);transform:rotate(0deg)}}@keyframes swing{20%{-webkit-transform:rotate(15deg);transform:rotate(15deg)}40%{-webkit-transform:rotate(-10deg);transform:rotate(-10deg)}60%{-webkit-transform:rotate(5deg);transform:rotate(5deg)}80%{-webkit-transform:rotate(-5deg);transform:rotate(-5deg)}to{-webkit-transform:rotate(0deg);transform:rotate(0deg)}}
+
+.category-links{
+  margin: 80px 0;
+  @media (max-width: 767px) {
+    margin: 40px 0;
+  }
+
+  .cat-item{
+    margin: 0 3.5%;
+    @media (max-width: 767px) {
+     margin: 0 3%;
+    }
+
+    a{
+      display: block;
+      font-size: 16px;
+      line-height: 1.5;
+      text-align: center;
+      color: $color-dark;
+      @media (max-width: 767px) {
+        font-size: 13px;
+      }
+      @media (max-width: 425px) {
+        font-size: 12px;
+      }
+      .icon{
+        display: flex;
+        width: 90px;
+        height: 90px;
+        border: solid 1px #eee;
+        align-items: center;
+        justify-content: center;
+        transition: all .3s ease;
+        padding: 20px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        @media (max-width: 767px) {
+          width: 70px;
+          height: 70px;
+          padding: 18px;
+        }
+        @media (max-width: 425px) {
+          width: 50px;
+          height: 50px;
+          padding: 12px;
+        }
+      }
+      &:hover{
+        color: $primary-color;
+        .icon{
+          -webkit-animation-name:swing;
+          animation-name:swing;
+          animation-duration: 1s;
+          border-color: $primary-color;
+          padding: 17px;
+          @media (max-width: 767px) {
+            padding: 15px;
+          }
+          @media (max-width: 425px) {
+            padding: 10px;
+          }
+        }
+      }
+    }
+
+
+  }
+}

@@ -1,0 +1,57 @@
+
+$spinnerSize: 80;
+
+svg.spinner {
+  margin: 80px auto;
+  transform: scale(.4);
+  position: relative;
+  //left: calc(50% - 40px);
+  //top: 50px;
+  width: $spinnerSize + px;
+  height: $spinnerSize + px;
+  x: 0px; y: 0px;
+  viewBox: 0 0 $spinnerSize $spinnerSize;
+  circle {
+    fill: transparent;
+    stroke: #ee1c47;
+    //stroke: rgba(238,28,71,.8);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 150;
+    transform-origin: (0.5px * $spinnerSize) (0.5px * $spinnerSize) 0;
+    animation: spinner 3s linear infinite;
+    &.small{
+      position: absolute;
+      stroke: #c8183c;
+      //stroke: rgba(200,24,60,.7);
+      top: 0;
+      left: 0;
+      stroke-dasharray: 60;
+      animation: spinnerreverse 3s linear infinite;
+    }
+  }
+}
+@keyframes spinner {
+  0% {
+    // stroke-dashoffset: (0.66 * $spinnerSize);
+    transform: rotate(0deg);
+  } 50% {
+      // stroke-dashoffset: (3.14 * $spinnerSize);
+      transform: rotate(420deg);
+    } 100% {
+        // stroke-dashoffset: (0.66 * $spinnerSize);
+        transform: rotate(1080deg);
+      }
+}
+@keyframes spinnerreverse {
+  0% {
+    // stroke-dashoffset: (0.66 * $spinnerSize);
+    transform: rotate(0deg);
+  } 50% {
+      // stroke-dashoffset: (3.14 * $spinnerSize);
+      transform: rotate(-420deg);
+    } 100% {
+        // stroke-dashoffset: (0.66 * $spinnerSize);
+        transform: rotate(-1080deg);
+      }
+}

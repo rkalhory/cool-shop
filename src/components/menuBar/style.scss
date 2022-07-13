@@ -1,0 +1,179 @@
+@import "src/styles/variables";
+
+.menu-bar{
+  background: #fff;
+  z-index: 6;
+  position: relative;
+  padding: 10px 0;
+
+  .content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-right{
+      display: flex;
+      align-items: center;
+    }
+  }
+  .logo{
+    display: flex;
+    align-items: center;
+
+    &-img{
+      width: 70px;
+      height: auto;
+      transition: all .2s ease-in-out;
+      //margin-left: 5px;
+    }
+    span{
+      display: block;
+      font-size: 18px;
+      letter-spacing: 2px;
+      line-height: 1.5;
+      font-weight: bold;
+      color: $primary-color;
+    }
+  }
+  .link-btn{
+    position: relative;
+    display: inline-block;
+    font-size: 18px;
+    color: #666;
+    margin-left: 15px;
+    &:hover{
+      color: $primary-color;
+    }
+    span{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      background-color: $primary-color;
+      color: #fff;
+      font-size: 11px;
+      border-radius: 50%;
+      width: 17px;
+      height: 17px;
+      top: -10px;
+      right: -7px;
+      z-index: 2;
+    }
+  }
+  .search-btn{
+    @extend %button-default;
+    display: inline-block;
+    font-size: 18px;
+    margin-left: 15px;
+    &:hover{
+      color: $primary-color;
+    }
+  }
+  &-icons{
+    display: flex;
+    align-items: center;
+  }
+  .menu-btn{
+    @extend %button-default;
+    display: inline-block;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    z-index: 9;
+
+    span {
+      width: 25px;
+      height: 2px;
+      background-color: #6a6a6a;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      position: relative;
+      display: block;
+      margin: auto;
+      top: 0;
+      transition: .3s ease;
+      border-radius: 0;
+
+      &:before {
+        transition-property: top,-webkit-transform;
+        transition-property: top,transform;
+        transition-property: top,transform;
+        transition-duration: .3s,.3s;
+        transition-delay: .3s,0s!important;
+        width: 25px;
+        height: 2px;
+        background-color: #6a6a6a;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -7px;
+        transition: .3s ease;
+        border-radius: 0;
+      }
+      &:after{
+        transition-property: top,-webkit-transform;
+        transition-property: top,transform;
+        transition-property: top,transform;
+        transition-duration: .3s,.3s;
+        transition-delay: .3s,0s!important;
+        width: 25px;
+        height: 2px;
+        background-color: #6a6a6a;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 0;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 7px;
+        transition: .3s ease;
+      }
+    }
+    &.open span {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+      transition: background .3s 0s ease;
+      background: 0 0;
+    }
+    &.open span:before {
+      top: 0;
+      transition-delay: 0s,.3s!important;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    &.open span:after {
+      top: 0;
+      transition-delay: 0s,.3s!important;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  }
+
+
+}
+
+.menu-bar.fix-bar{
+  box-shadow: 0 5px 30px rgb(0 22 84 / 10%);
+  -webkit-box-shadow: 0 5px 30px rgb(0 22 84 / 10%);
+  background: #ffffff;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  -webkit-transition: 0.2s ease-in;
+  -o-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+
+  .logo-img{
+      width: 53px;
+  }
+}
+

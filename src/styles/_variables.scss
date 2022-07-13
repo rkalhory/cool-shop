@@ -1,0 +1,10 @@
+$primary-color: #ee1c47;
+$color-dark:#2c2c2c;
+$grey: #f8f8f8;
+$bg-dark: #252525;
+
+%button-default{
+  background: transparent;
+  border: 0;
+  transition: all .3s ease;
+}

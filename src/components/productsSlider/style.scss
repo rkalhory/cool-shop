@@ -1,0 +1,44 @@
+@import "src/styles/variables";
+
+.slick-slide{
+  padding: 0 15px;
+}
+
+.slick-list{
+  padding: 15px 0;
+}
+
+.slick-prev, .slick-next {
+  width: 40px;
+  height: 40px;
+  @media (max-width: 991px) {
+    display: none!important;
+  }
+}
+.slick-prev {
+  left: -45px;
+  @media (min-width: 992px) and (max-width: 1200px){
+    left: -32px;
+  }
+}
+
+.slick-next {
+  right: -45px;
+  @media (min-width: 992px) and (max-width: 1200px){
+    right: -32px;
+  }
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.15);
+  transition: color .2s ease;
+  @media (min-width: 992px) {
+    font-size: 34px;
+  }
+
+}
+
+.slick-prev:hover:before, .slick-next:hover:before {
+  color: transparentize($primary-color,0.5);
+}

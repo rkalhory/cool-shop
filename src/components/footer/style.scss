@@ -1,0 +1,121 @@
+@import "src/styles/variables";
+
+.footer{
+  background-color: $bg-dark;
+  padding: 60px 0;
+  @media (max-width: 500px) {
+    padding: 40px 0;
+  }
+  .content{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    color: #fff;
+
+    .footer-col{
+      padding: 0 15px;
+      flex:0 0 33.333%;
+      max-width: 33.333%;
+
+      @media (max-width: 767px) {
+        flex:0 0 50%;
+        max-width: 50%;
+        &:first-child{
+          flex:0 0 100%;
+          max-width: 100%;
+          margin-bottom: 40px;
+        }
+      }
+    }
+    .logo{
+      width: 80px;
+      height: auto;
+      margin-bottom: 15px;
+
+      @media (max-width: 500px) {
+          width: 70px;
+          margin-bottom: 10px;
+      }
+    }
+    p{
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      text-align: justify;
+      @media (max-width: 500px) {
+        font-size: 12px;
+      }
+    }
+    .contact-link{
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: #fff;
+      @media (max-width: 500px) {
+        font-size: 12px;
+      }
+      &:hover{
+        color: $primary-color;
+      }
+
+      svg{
+        margin-left: 8px;
+      }
+    }
+
+    .title{
+      display: block;
+      margin-bottom: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      @media (max-width: 500px) {
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+    }
+    .link-list{
+      list-style: circle;
+      margin-right: 15px;
+      li {
+        margin-bottom: 15px;
+        @media (max-width: 500px) {
+          margin-bottom: 10px;
+        }
+        &:last-child{
+          margin-bottom: 0;
+        }
+        a {
+          display: inline-block;
+          color: #fff;
+          font-size: 13px;
+          @media (max-width: 500px) {
+            font-size: 12px;
+          }
+          &:hover{
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+.copyright{
+  text-align: center;
+  background-color: $bg-dark;
+  border-top: 1px solid #2b2b2b;
+  padding: 15px 0;
+
+  p{
+    color: #a7a7a7;
+    font-size: 12px;
+    margin: 0;
+    @media (max-width: 500px) {
+      font-size: 11px;
+    }
+  }
+}

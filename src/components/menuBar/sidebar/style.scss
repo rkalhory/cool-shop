@@ -1,0 +1,119 @@
+@import "src/styles/variables";
+
+.sidebar{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  right: 0;
+  transform: translateX(150%);
+  transition: all .7s ease-in-out;
+  width: 300px;
+  max-width: 80vw;
+  height: 100vh;
+  padding-bottom: 30px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 11%);
+  z-index: 99999;
+  overflow-y: auto;
+
+  &.open{
+    transform: translateX(0);
+  }
+
+  .menu>li{
+    display: block;
+    position: relative;
+    a{
+      display: block;
+      font-size: 15px;
+      background: #fff;
+      color: $color-dark;
+      padding: 15px 10px;
+      border-bottom: 1px solid #e4e8ec;
+      &:hover{
+        color: #fff;
+        background: $primary-color;
+      }
+    }
+    ul{
+      max-height: 0;
+      transition: all .6s ease;
+      overflow: hidden;
+      li a{
+        padding: 13px 35px 13px 10px;
+        font-size: 14px;
+      }
+    }
+    input{
+      display: none;
+      &:checked~ul{
+        max-height: 100vh;
+        //overflow-y: auto;
+      }
+      &:checked~label:before{
+        content: '-';
+      }
+    }
+
+    .toggle-btn{
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      background: #eee;
+      width: 35px;
+      height: 35px;
+      outline: none;
+      user-select: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s ease;
+      cursor: pointer;
+      &:before{
+        content: '+';
+        display: block;
+        font-size: 22px;
+      }
+      &:hover{
+        background-color: $primary-color;
+        color: #fff;
+      }
+    }
+    ul li{
+      display: block;
+      position: relative;
+    }
+  }
+
+}
+
+.search-form{
+  display: flex;
+  padding: 10px 15px;
+  margin-top: 25px;
+  justify-content: space-between;
+
+  input{
+    flex: 0 0 85%;
+    max-width: 85%;
+    border: solid 1px #eee;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 5px;
+
+  }
+  button{
+    @extend %button-default;
+   background-color: $primary-color;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    flex: 0 0 13%;
+    width: 13%;
+
+  }
+}

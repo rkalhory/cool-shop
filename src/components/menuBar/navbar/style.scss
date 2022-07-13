@@ -1,0 +1,126 @@
+@import "src/styles/variables";
+
+.main-menu{
+  display: flex;
+  margin-right: 55px;
+  position: relative;
+  &>li{
+    display: inline-block;
+    position: relative;
+    margin-left: 40px;
+
+    &:last-child{
+      margin-left: 0;
+    }
+  }
+
+  &>li>a{
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $color-dark;
+
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      height: 7px;
+      display: block;
+      width: 0;
+      right: 0;
+      opacity: .1;
+      background: transparentize($primary-color,.5);
+      transition: all ease .35s
+    }
+
+    &:hover{
+      color:$primary-color;
+    }
+    &:hover:after{
+      width: 100%;
+    }
+  }
+  &>li ul{
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999;
+    transform: translateY(5%);
+    transform-origin: top center;
+    transition: .2s ease;
+    top: 0;
+    right: 100%;
+    min-width: 250px;
+    background: #fff;
+    position: absolute;
+    -webkit-box-shadow: 0 1px 17px rgb(0 0 0 / 11%);
+    box-shadow: 0 1px 17px rgb(0 0 0 / 11%);
+    text-align: right;
+    padding: 15px 0;
+  }
+
+  &>li>ul{
+    top: 100%;
+    right: 0;
+    margin-top: 12px;
+    padding: 25px;
+  }
+
+  &>li>ul:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: -20px;
+    height: 25px;
+    width: 100%;
+    right: 0;
+    background: transparent;
+  }
+
+  li:hover>ul{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &>li ul li{
+    display: block;
+    position: relative;
+    transition: padding-right 200ms;
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+    &:before{
+      content: "";
+      width: 0;
+      height: 2px;
+      background: $primary-color;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: 200ms;
+    }
+    &:hover::before {
+      transition: 200ms;
+      width: 15px;
+    }
+    &:hover{
+      padding-right: 20px;
+    }
+    a{
+      display: block;
+      line-height: 1.7;
+      font-size: 15px;
+      padding: 8px 5px;
+      color: $color-dark;
+      &:hover{
+        color: $primary-color;
+      }
+    }
+  }
+
+
+}
+

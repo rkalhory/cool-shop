@@ -1,0 +1,51 @@
+@import "src/styles/variables";
+
+//.main-slider{
+//  height: 400px;
+//}
+
+.awssld > .awssld__wrapper > .awssld__container > .awssld__box > .awssld__content > img {
+  object-fit: contain;
+  height: auto;
+}
+
+.awssld__bullets {
+  bottom: 15px;
+  z-index: 9;
+}
+
+.awssld__bullets button {
+  width: 13px;
+  height: 13px;
+}
+
+.awssld__bullets .awssld__bullets--active {
+  transform: scale(1.2);
+}
+
+.awssld {
+  --slider-height-percentage: 32.94289897510981vw;
+  --slider-transition-duration: 650ms;
+  --organic-arrow-thickness: 5px;
+  --organic-arrow-border-radius: 5px;
+  --organic-arrow-height: 25px;
+  --organic-arrow-color: #ee1c47;
+  --control-button-width: 10px;
+  --control-button-height: 10px;
+  --control-button-background: transparent;
+  --control-bullet-color: #fff;
+  --control-bullet-active-color: #ee1c47;
+  --loader-bar-color: #ee1c47;
+  --loader-bar-height: 0;
+  @media (max-width: 500px) {
+    --slider-height-percentage: 30vw;
+  }
+}
+
+.awssld__next {
+  right: 2%;
+}
+
+.awssld__prev {
+  left: 2%;
+}
