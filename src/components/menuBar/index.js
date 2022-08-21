@@ -6,12 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart,faHeart,faSearch } from '@fortawesome/free-solid-svg-icons'
 import logo from '../../assets/images/icons/logo.png'
 import './style.scss'
+import {useAllCategories} from "../../customHooks";
 
 const Menu=()=> {
 
 
     let cart=JSON.parse(localStorage.getItem('cart'))||[]
-
+    const {data:categories=[],catLoading}=useAllCategories()
 
     const [width, setWidth] = useState(0);
     const [cartCount, setCartCount] = useState(cart.length);
@@ -46,15 +47,14 @@ const Menu=()=> {
                     <div className='content-right'>
                         <Link to={'/'} className='logo'>
                             <img src={logo} className='logo-img' alt='لوگو'/>
-                            {/*<span>Cool Shop</span>*/}
                         </Link>
-                        {width>=992?<Navbar/>:''}
+                        {width>=992?<Navbar categories={categories}/>:''}
                     </div>
                     <div className='menu-bar-icons'>
                         {width>=992&&<button type='button' className='search-btn'><FontAwesomeIcon icon={faSearch} /></button> }
                         <Link to='/cart' className='link-btn'><FontAwesomeIcon icon={faShoppingCart} /><span className='count'>{cartCount}</span></Link>
                         <Link to='/wish-list' className='link-btn'><FontAwesomeIcon icon={faHeart}/><span className='count'>{wishCount}</span></Link>
-                        {width<992&&<Sidebar/> }
+                        {width<992&&<Sidebar categories={categories}/> }
                     </div>
                 </div>
             </div>

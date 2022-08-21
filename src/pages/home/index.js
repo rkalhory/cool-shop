@@ -8,6 +8,8 @@ import {useAllProducts} from "../../customHooks";
 
 const Home=()=> {
     const {data:products,isLoading}=useAllProducts(10)
+
+    console.log('products:',products)
     return (
         <>
             <MainSlider/>

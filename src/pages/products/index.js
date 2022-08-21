@@ -21,22 +21,17 @@ const Products=()=> {
     const [searchParams,setSearchParams]=useSearchParams()
 
     // const [params]=useSearchParams()
-    const cat=searchParams.get('type')||0
+    const cat=parseInt(searchParams.get('type'))||0
 
     const sortObjectsArray = require('sort-objects-array');
 
     const {data:products=[],isLoading}=useAllProducts()
-    const {data:categories=[]}=useAllCategories()
+    const {data:categories=[],catLoading}=useAllCategories()
     const [loading,setLoading]=useState(false)
     const [filterProducts,setFilterProducts]=useState([])
-    const [value, setValue] = useState({ min: 0, max: 1000 })
+    const [value, setValue] = useState({ min: 0, max: 90000000 })
     const [catList, setCatList] = useState([])
     const [sortType, setSortType] = useState(0)
-
-    const cat1 = useRef();
-    const cat2 = useRef();
-    const cat3 = useRef();
-    const cat4 = useRef();
 
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
@@ -53,20 +48,16 @@ const Products=()=> {
         setItemOffset(newOffset);
     };
 
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[])
 
 
     useEffect(()=>{
         if (products.length&&categories.length) {
             if(cat!==0){
                 clearFilters()
-                setCatList([categories[parseInt(cat)-1]])
-                if(cat==1)cat1.current.checked=true
-                if(cat==2)cat2.current.checked=true
-                if(cat==3)cat3.current.checked=true
-                if(cat==4)cat4.current.checked=true
-                searchParams.delete('type');
-                setSearchParams(searchParams);
-
+                setCatList([cat])
             }else{
                 setFilterProducts(products)
             }
@@ -88,7 +79,7 @@ const Products=()=> {
                 if(!catList.length){
                     return p.price <= value.max && p.price >= value.min
                 }else{
-                    return catList.includes(p.category) && p.price <= value.max && p.price >= value.min
+                    return catList.includes(p.category.id) && p.price <= value.max && p.price >= value.min
                 }
 
             })
@@ -101,7 +92,7 @@ const Products=()=> {
     function clearFilters() {
         setCatList([])
         setFilterProducts(products)
-        setValue({ min: 0, max: 1000 })
+        setValue({ min: 0, max: 90000000 })
         setItemOffset(0)
         paginationRef.current.state.selected=0
         let inputs = document.querySelectorAll('.cat-filter input');
@@ -111,8 +102,12 @@ const Products=()=> {
         setSortType(0)
     }
 
-    function catFilter(cat,checked) {
-        checked?setCatList(c=>[...c,cat]):setCatList(catList.filter(c=>c!==cat))
+    function catFilter(catId,checked) {
+        if((cat===catId)&&!checked) {
+            searchParams.delete('type');
+            setSearchParams(searchParams);
+        }
+        checked?setCatList(c=>[...c,catId]):setCatList(catList.filter(c=>c!==catId))
     }
 
     const sortFunction = (array,type) => {
@@ -142,7 +137,6 @@ const Products=()=> {
         }
     },[sortType])
 
-
     return(loading?<Spinner/>:
         <>
             <Breadcrumbs current={'محصولات'} path={p}/>
@@ -153,19 +147,28 @@ const Products=()=> {
                             <div className='box'>
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <h2 className='title'>فیلترها</h2>
-                                    <button type='button' className='clear-filter' onClick={clearFilters}>حذف فیلترها</button>
+                                    <button type='button' className='clear-filter' onClick={()=>{
+                                        searchParams.delete('type');
+                                        setSearchParams(searchParams);
+                                        clearFilters()
+                                    }}>حذف فیلترها</button>
                                 </div>
                                 <div className='block'>
                                     <h2 className='title'>دسته بندی ها</h2>
-                                    <div><label className='cat-filter'><input type='checkbox' ref={cat4} onChange={e=>catFilter("women's clothing",e.target.checked)}/><i><FontAwesomeIcon icon={faCheck}/></i><span>زنانه</span></label></div>
-                                    <div><label className='cat-filter'><input type='checkbox' ref={cat3} onChange={e=>catFilter("men's clothing",e.target.checked)}/><i><FontAwesomeIcon icon={faCheck}/></i><span>مردانه</span></label></div>
-                                    <div><label className='cat-filter'><input type='checkbox' ref={cat2} onChange={e=>catFilter("jewelery",e.target.checked)}/><i><FontAwesomeIcon icon={faCheck}/></i><span>جواهرات</span></label></div>
-                                    <div><label className='cat-filter'><input type='checkbox' ref={cat1} onChange={e=>catFilter("electronics",e.target.checked)}/><i><FontAwesomeIcon icon={faCheck}/></i><span>الکترونیکی</span></label></div>
+                                    {catLoading?<Spinner/>:categories?.map(item=>(
+                                        <div key={item.id}>
+                                            <label className='cat-filter'>
+                                                <input type='checkbox' checked={catList.includes(item.id)} onChange={e=>catFilter(item.id,e.target.checked)}/>
+                                                <i><FontAwesomeIcon icon={faCheck}/></i>
+                                                <span>{item.title}</span>
+                                            </label>
+                                        </div>
+                                    ))}
                                 </div>
                                 <div className='block custom'>
                                     <h2 className='title'>محدوده قیمت</h2>
                                     <InputRange
-                                        maxValue={1000}
+                                        maxValue={90000000}
                                         maxLabel={'بیشترین'}
                                         minLabel={'کمترین'}
                                         minValue={0}

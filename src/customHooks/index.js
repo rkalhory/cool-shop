@@ -8,11 +8,11 @@ function useAllProducts(limit) {
 function useProduct(id) {
     return useQuery(["product",id],api.getProduct)
 }
-
-function useCategoryProducts(cat) {
-    return useQuery(["productsCat",cat],api.getCatProducts)
-}
-
+//
+// function useCategoryProducts(cat) {
+//     return useQuery(["productsCat",cat],api.getCatProducts)
+// }
+//
 function useAllCategories() {
     return useQuery(["categories"],api.getAllCategories)
 }
@@ -20,4 +20,4 @@ function useAllCategories() {
 
 
 
-export {useAllProducts,useProduct,useCategoryProducts,useAllCategories}
+export {useAllProducts,useProduct,useAllCategories}

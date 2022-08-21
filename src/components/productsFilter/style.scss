@@ -33,7 +33,10 @@
       max-width: 30%;
     }
   }
-
+  &.active{
+    background-color: #222;
+    color: #fff;
+  }
 
 }
 

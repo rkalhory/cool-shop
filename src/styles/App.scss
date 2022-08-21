@@ -220,6 +220,29 @@ img{
     padding: 5px 15px;
     margin-bottom: 20px;
   }
+  .slider-pics{
+    margin-top: 10px;
+    //justify-content: space-between;
+    .pic{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: solid 1px #eee;
+      max-width: 33%;
+      flex:1 1 0;
+      margin:0 5px;
+      &:hover{
+        border-color: #cdcbcb;
+      }
+     &:first-child{
+       margin-right: 0;
+     }
+      &:last-child{
+        margin-left: 0;
+      }
+    }
+  }
 }
 
 .flex-wrap{
@@ -236,4 +259,8 @@ img{
     display: block;
     margin-bottom: 10px;
   }
+}
+
+.react-simple-star-rating{
+  font-size: 0;
 }

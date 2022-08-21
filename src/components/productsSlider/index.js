@@ -37,7 +37,7 @@ const ProductsSlider=({products,isLoading})=> {
         ],
         autoplay:true,
         autoplaySpeed:4000,
-        rtl:true,
+        // rtl:true,
     }
     return(
         <div className='overflow-hidden ltr'>

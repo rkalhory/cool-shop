@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSearch } from '@fortawesome/free-solid-svg-icons'
 import './style.scss'
 
-const Sidebar=()=> {
+const Sidebar=({categories})=> {
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
 
@@ -24,8 +24,12 @@ const Sidebar=()=> {
                     {menuItems.map((item,index)=>(
                         <li key={index}>
                             <Link to={item?.link}>{item.title}</Link>
-                            {item?.child?.length ? <><input type='checkbox' id='level1'/><label className='toggle-btn' htmlFor='level1'></label></> : ''}
-                            {item?.child?.length?createSub(item?.child,true,2):''}
+                            {item?.child ? <><input type='checkbox' id='level1'/><label className='toggle-btn' htmlFor='level1'></label></> : ''}
+                            {item?.child?<ul>{categories.map((item)=>(
+                                <li key={item?.id}>
+                                    <Link to={`/products?type=${item?.id}`}>{item.title}</Link>
+                                </li>
+                            ))}</ul>:''}
                         </li>
                     ))}
                 </ul>

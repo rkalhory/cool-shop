@@ -33,13 +33,25 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      direction: ltr;
-      text-align: left;
+      //direction: ltr;
+      //text-align: left;
       &:hover{
         color: $primary-color;
       }
       @media (min-width: 992px)and (max-width: 1200px){
         font-size: 14px;
+      }
+    }
+    .cost{
+      display: block;
+      line-height: 1.7;
+      font-size: 16px;
+      color:$color-dark;
+      span{
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 4px;
+        color: #666;
       }
     }
     .cart-btn{

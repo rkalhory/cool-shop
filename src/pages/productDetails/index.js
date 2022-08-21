@@ -1,12 +1,11 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import {useCategoryProducts, useProduct} from "../../customHooks";
+import {useAllProducts, useProduct} from "../../customHooks";
 import ProductSkeleton from "../../components/productSkeleton";
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 import InnerImageZoom from 'react-inner-image-zoom';
 import './style.scss'
 import Breadcrumbs from "../../components/breadcrumb";
-import getCategoryInfo from "../../utils/getCategoryInfo";
 import {Rating} from "react-simple-star-rating";
 import {faShoppingCart,faHeart} from "@fortawesome/free-solid-svg-icons";
 import {faHeart as heartR} from "@fortawesome/free-regular-svg-icons";
@@ -24,37 +23,61 @@ const p=[
 const ProductDetails=()=> {
 
     const { id } = useParams();
-    const {data:product={},isLoading}=useProduct(id)
-    const categoryInfo=getCategoryInfo(product?.category)
+    const {data:product={},productLoading}=useProduct(id)
+    const {data:products={},isLoading}=useAllProducts()
 
-    const {data:similarProducts=[],loadingSlider}=useCategoryProducts(product?.category)
-
+    const [mainPic,setMainPic]=useState('')
     const [isWish,setIsWish]=useState(false)
+    const [loadingSlider,setLoadingSlider]=useState(true)
+    const [similarProducts,setSimilarProducts]=useState([])
+
+
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[id])
+
+    useEffect(()=>{
+        if(products.length&&Object.keys(product).length){
+            let filter=products.filter(p=>p?.category?.id===product?.category?.id&&p.id!==product?.id)
+            setSimilarProducts(filter)
+            setLoadingSlider(false)
+            setMainPic(product?.images[0])
+        }
+    },[products,product])
+
+
 
     console.log('product:',product)
-    console.log('categoryInfo:',categoryInfo)
     console.log('similarProducts:',similarProducts)
 
     return (
         <>
             <Breadcrumbs current={product?.title} path={p}/>
             <div className='product-detail'>
-                <div className='container ltr'>
+                <div className='container'>
                     {isLoading?<ProductSkeleton/>:
                         <div className='product-row mb-80'>
                             <div className='col-img'>
                                 <div className='zoom-image-box'>
-                                    <InnerImageZoom src={product?.image} zoomType={'hover'} />
+                                    <InnerImageZoom src={mainPic} zoomType={'hover'} />
                                 </div>
+                                <div className='d-flex slider-pics'>
+                                    {product?.images?.map((p,index)=>(
+                                        <div key={index} onClick={()=>setMainPic(p)} className='pic'>
+                                            <img src={p} alt={`pic${index}`}/>
+                                        </div>
+                                    ))}
+                                </div>
+
                             </div>
                             <div className='col-info row-10'>
-                                <Link to={`/products?type=${categoryInfo?.value}`} className='cat-tag'>{categoryInfo?.label}</Link>
+                                <Link to={`/products?type=${product?.category?.id}`} className='cat-tag'>{product?.category?.title}</Link>
                                 <h1 className='title'>{product?.title}</h1>
                                 <div className='d-flex product-detail-rate'>
                                     <Rating ratingValue={(product?.rating?.rate*100)/5} size={15} readonly={true} />
-                                    <span className='d-inline-flex text'>({product?.rating?.count} Reviews)</span>
+                                    <span className='d-inline-flex text'>({product?.rating?.count} نظر)</span>
                                 </div>
-                                <span className='cost'>{product?.price}$</span>
+                                <span className='cost'>{product?.price}<span>تومان</span></span>
                                 <p>{product?.description}</p>
                                 <div className='product-detail-action'>
                                     <button type='button' className='add-cart' onClick={()=>addCart(product)}><FontAwesomeIcon icon={faShoppingCart} /> افزودن به سبد خرید</button>
