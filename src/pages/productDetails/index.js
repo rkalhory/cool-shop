@@ -12,7 +12,9 @@ import {faHeart as heartR} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import MainTitle from "../../components/mainTitle";
 import ProductsSlider from "../../components/productsSlider";
-import {addCart} from '../../utils/addProduct'
+import {addItem, addWish, removeWish} from "../../redux/action";
+import {toast} from "react-toastify";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const p=[
@@ -22,9 +24,13 @@ const p=[
 
 const ProductDetails=()=> {
 
+    const dispatch=useDispatch()
+
     const { id } = useParams();
     const {data:product={},productLoading}=useProduct(id)
     const {data:products={},isLoading}=useAllProducts()
+
+    const wishList=useSelector(s=>s.wishList)
 
     const [mainPic,setMainPic]=useState('')
     const [isWish,setIsWish]=useState(false)
@@ -45,10 +51,28 @@ const ProductDetails=()=> {
         }
     },[products,product])
 
+    function addToCart() {
+        dispatch(addItem(product))
+        toast.success('به سبد خرید اضافه شد!')
+    }
+
+    useEffect(()=>{
+        if(wishList.length){
+            const exist=wishList.find((x)=>x.id===product.id)
+            setIsWish(exist)
+        }
+    },[wishList])
 
 
-    console.log('product:',product)
-    console.log('similarProducts:',similarProducts)
+    function handleWishList(){
+        const exist=wishList.find((x)=>x.id===product.id)
+        if(!exist){
+            dispatch(addWish(product))
+        }else {
+            dispatch(removeWish(product))
+        }
+    }
+
 
     return (
         <>
@@ -80,8 +104,8 @@ const ProductDetails=()=> {
                                 <span className='cost'>{product?.price}<span>تومان</span></span>
                                 <p>{product?.description}</p>
                                 <div className='product-detail-action'>
-                                    <button type='button' className='add-cart' onClick={()=>addCart(product)}><FontAwesomeIcon icon={faShoppingCart} /> افزودن به سبد خرید</button>
-                                    <button type='button' className={`add-wish ${isWish?'active':''}`} onClick={()=>setIsWish(s=>!s)}><FontAwesomeIcon icon={isWish?faHeart:heartR} /></button>
+                                    <button type='button' className='add-cart' onClick={()=>addToCart()}><FontAwesomeIcon icon={faShoppingCart} /> افزودن به سبد خرید</button>
+                                    <button type='button' className={`add-wish ${isWish?'active':''}`} onClick={handleWishList}><FontAwesomeIcon icon={isWish?faHeart:heartR} /></button>
                                 </div>
                             </div>
                         </div>
