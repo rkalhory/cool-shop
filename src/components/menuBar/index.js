@@ -16,7 +16,6 @@ const Menu=()=> {
 
     const [width, setWidth] = useState(0);
     const [cartCount, setCartCount] = useState(0);
-    const [wishCount, setWishCount] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(0);
     const handleScroll = () => {
         const position = window.pageYOffset;
@@ -46,14 +45,11 @@ const Menu=()=> {
                 some=some+item.qty
             });
             setCartCount(some)
+        }else{
+            setCartCount(0)
         }
     },[cart])
 
-    useEffect(()=>{
-        if (wishList.length){
-            setWishCount(wishList.length)
-        }
-    },[wishList])
 
 
 
@@ -70,7 +66,7 @@ const Menu=()=> {
                     <div className='menu-bar-icons'>
                         {/*{width>=992&&<button type='button' className='search-btn'><FontAwesomeIcon icon={faSearch} /></button> }*/}
                         <Link to='/cart' className='link-btn'><FontAwesomeIcon icon={faShoppingCart} /><span className='count'>{cartCount}</span></Link>
-                        <Link to='/wish-list' className='link-btn'><FontAwesomeIcon icon={faHeart}/><span className='count'>{wishCount}</span></Link>
+                        <Link to='/wish-list' className='link-btn'><FontAwesomeIcon icon={faHeart}/><span className='count'>{wishList.length}</span></Link>
                         {width<992&&<Sidebar categories={categories}/> }
                     </div>
                 </div>

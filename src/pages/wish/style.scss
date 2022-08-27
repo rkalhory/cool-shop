@@ -1,0 +1,63 @@
+@import "src/styles/variables";
+
+.wish-col {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 5px 15px;
+  margin-bottom: 20px;
+  @media (min-width: 992px) and (max-width: 1199px) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  @media (max-width: 991px) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  @media (max-width: 650px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+.empty-cart {
+  padding: 20px 0;
+  text-align: center;
+  margin: 0 auto;
+
+  img {
+    display: block;
+    margin: 0 auto 15px;
+    max-width: 170px;
+  }
+
+  h3 {
+    display: block;
+    font-size: 16px;
+    color: $color-dark;
+    line-height: 1.6;
+    margin: 0 0 15px;
+  }
+
+  span {
+    display: block;
+    color: #888;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 15px;
+  }
+
+  .more-btn {
+    display: inline-block;
+    padding: 9px 25px;
+    font-size: 13px;
+    margin: 0;
+    border-color: $primary-color;
+    color: $primary-color;
+
+    &:hover {
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+}

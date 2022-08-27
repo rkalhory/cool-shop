@@ -110,6 +110,18 @@ img{
 
 }
 
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  .full-col{
+    padding: 0 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 @-webkit-keyframes slideInDown{
   from{
     -webkit-transform:translate3d(0,-100%,0);
@@ -248,9 +260,13 @@ img{
 .flex-wrap{
   flex-wrap: wrap;
 }
+.mt-20{
+  margin-top: 20px;
+}
 
 .w-100{
   width: 100%;
+  max-width: 100%;
 }
 
 .row-10{
@@ -261,6 +277,24 @@ img{
   }
 }
 
+.row-20{
+  margin-bottom: -20px;
+  &>*{
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
 .react-simple-star-rating{
   font-size: 0;
 }
+
+.page-title{
+  display: block;
+  font-size: 18px;
+  color:$color-dark;
+  margin: 0 0 30px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+

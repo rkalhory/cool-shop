@@ -9,6 +9,8 @@ import Products from "../pages/products";
 import ProductDetails from "../pages/productDetails";
 import Details from "../pages/detail";
 import NotFound from "../pages/404";
+import Cart from "../pages/cart";
+import Wish from "../pages/wish";
 
 const SiteRouter=()=> {
     return(
@@ -18,7 +20,8 @@ const SiteRouter=()=> {
             <Route path={'/contact'} element={<Contact/>} />
             <Route path={'/products'} element={<Products/>} />
             <Route path={"/products/:id"} element={<ProductDetails />} />
-            <Route path={'/details'} element={<Details/>} />
+            <Route path={'/cart'} element={<Cart/>} />
+            <Route path={'/wish-list'} element={<Wish/>} />
             <Route path={'*'} element={<NotFound/>} />
         </Routes>
     )

@@ -1,0 +1,120 @@
+@import "src/styles/variables";
+
+.content-col{
+  flex: 0 0 70%;
+  max-width: 70%;
+  padding: 0 15px;
+  &.w-100{
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  @media (max-width: 991px){
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
+.checkout-col{
+  flex: 0 0 30%;
+  max-width: 30%;
+  padding: 0 15px;
+  @media (max-width: 991px){
+    max-width: 100%;
+    flex: 0 0 100%;
+    margin-top: 15px;
+  }
+  .text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 600;
+    color:$color-dark;
+    margin-bottom: 8px;
+    .currency{
+      display: inline-block;
+      font-size: 11px;
+      margin-right: 4px;
+    }
+    &.total{
+      font-size: 14px;
+    }
+
+  }
+  p{
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 20px 0 30px;
+  }
+  .checkout-btn{
+    @extend %button-default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background:$primary-color;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 13px;
+    margin-top: 20px;
+    border-radius: 4px;
+    &:hover{
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+}
+
+.cart-box{
+  padding: 25px;
+  border: 1px solid #e0e0e2;
+  border-radius: 6px;
+  @media (max-width: 1199px){
+    padding: 15px;
+  }
+  .page-title{
+    margin-bottom: 10px;
+  }
+  .cart-count{
+    display: block;
+    font-size: 14px;
+    color: #888;
+    font-weight: normal;
+    margin-bottom: 20px;
+  }
+}
+
+.empty-cart{
+  padding: 30px 0;
+  text-align: center;
+  img{
+    display: block;
+    margin: 0 auto 15px;
+  }
+  h3{
+    display: block;
+    font-size: 16px;
+    color:$color-dark;
+    line-height: 1.6;
+    margin: 0 0 15px;
+  }
+  span{
+    display: block;
+    color: #888;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 15px;
+  }
+  .more-btn{
+    display: inline-block;
+    padding: 9px 25px;
+    font-size: 13px;
+    margin: 0;
+    border-color:$primary-color;
+    color: $primary-color;
+    &:hover{
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+}

@@ -48,7 +48,7 @@ const ProductCart=({product}) => {
                 <Link to={`/products/${product?.id}`} className='title'>{product?.title}</Link>
                 <div className='d-flex align-items-center justify-content-between w-100'>
                     <Rating ratingValue={(product?.rating?.rate * 100) / 5} size={15} readonly={true}/>
-                    <span className='cost'>{product?.price}<span>تومان</span></span>
+                    <span className='cost'>{product?.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<span>تومان</span></span>
                 </div>
                 <button type='button' className='cart-btn' onClick={addToCart}>افزودن به سبد خرید</button>
             </div>

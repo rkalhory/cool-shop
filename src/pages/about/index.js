@@ -7,7 +7,9 @@ const path=[
 const About=()=> (
         <>
             <Breadcrumbs current={'درباره ما'} path={path}/>
-
+            <div className='container'>
+                <h1 className='page-title'>درباره ما</h1>
+            </div>
         </>
     )
 

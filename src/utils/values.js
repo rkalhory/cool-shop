@@ -13,9 +13,9 @@ import electronic from '../assets/images/icons/electronic.png'
 export const menuItems=[
     {link:'/',title:'صفحه اصلی'},
     {link:'/products',title:'محصولات',child:true},
-    {link:'/about',title:'درباره ما'},
-    {link:'/contact',title:'تماس با ما'},
-    {link:'/details',title:'جزئیات'},
+    {link:'/',title:'درباره ما'},
+    {link:'/',title:'تماس با ما'},
+    // {link:'/details',title:'جزئیات'},
 ]
 
 

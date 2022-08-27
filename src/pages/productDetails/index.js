@@ -73,7 +73,6 @@ const ProductDetails=()=> {
         }
     }
 
-
     return (
         <>
             <Breadcrumbs current={product?.title} path={p}/>
@@ -101,7 +100,7 @@ const ProductDetails=()=> {
                                     <Rating ratingValue={(product?.rating?.rate*100)/5} size={15} readonly={true} />
                                     <span className='d-inline-flex text'>({product?.rating?.count} نظر)</span>
                                 </div>
-                                <span className='cost'>{product?.price}<span>تومان</span></span>
+                                <span className='cost'>{product?.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<span>تومان</span></span>
                                 <p>{product?.description}</p>
                                 <div className='product-detail-action'>
                                     <button type='button' className='add-cart' onClick={()=>addToCart()}><FontAwesomeIcon icon={faShoppingCart} /> افزودن به سبد خرید</button>
