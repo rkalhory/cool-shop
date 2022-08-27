@@ -37,11 +37,6 @@ const ProductDetails=()=> {
     const [loadingSlider,setLoadingSlider]=useState(true)
     const [similarProducts,setSimilarProducts]=useState([])
 
-
-    useEffect(()=>{
-        window.scrollTo(0, 0)
-    },[id])
-
     useEffect(()=>{
         if(products.length&&Object.keys(product).length){
             let filter=products.filter(p=>p?.category?.id===product?.category?.id&&p.id!==product?.id)

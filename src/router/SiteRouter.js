@@ -1,7 +1,9 @@
 import {
     Routes,
     Route,
+    useLocation
 } from "react-router-dom";
+import {useLayoutEffect} from 'react'
 import Home from "../pages/home";
 import About from "../pages/about";
 import Contact from "../pages/contact";
@@ -13,6 +15,10 @@ import Cart from "../pages/cart";
 import Wish from "../pages/wish";
 
 const SiteRouter=()=> {
+    const location = useLocation();
+    useLayoutEffect(() => {
+        document.documentElement.scrollTo(0, 0);
+    }, [location.pathname]);
     return(
         <Routes>
             <Route path={'/'} element={<Home/>} />

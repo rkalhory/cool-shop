@@ -49,11 +49,6 @@ const Products=()=> {
     };
 
     useEffect(()=>{
-        window.scrollTo(0, 0)
-    },[])
-
-
-    useEffect(()=>{
         if (products.length&&categories.length) {
             if(cat!==0){
                 clearFilters()
