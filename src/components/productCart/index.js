@@ -12,7 +12,7 @@ import {useEffect, useState} from "react";
 const ProductCart=({product}) => {
 
     const dispatch=useDispatch()
-    const wishList=useSelector(s=>s.wishList)
+    const {wishList}=useSelector(s=>s)
     const [isWish,setIsWish]=useState(false)
 
     function addToCart() {
@@ -25,7 +25,7 @@ const ProductCart=({product}) => {
             const exist=wishList.find((x)=>x.id===product.id)
             setIsWish(!!exist)
         }
-    },[wishList])
+    },[wishList,product])
 
 
     function handleWishList(){
