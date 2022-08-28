@@ -30,7 +30,7 @@ const ProductDetails=()=> {
     const {data:product={},productLoading}=useProduct(id)
     const {data:products={},isLoading}=useAllProducts()
 
-    const wishList=useSelector(s=>s.wishList)
+    const {wishList}=useSelector(s=>s)
 
     const [mainPic,setMainPic]=useState('')
     const [isWish,setIsWish]=useState(false)
@@ -52,11 +52,12 @@ const ProductDetails=()=> {
     }
 
     useEffect(()=>{
-        if(wishList.length){
+        if(wishList.length&&Object.keys(product).length){
             const exist=wishList.find((x)=>x.id===product.id)
-            setIsWish(exist)
+            setIsWish(!!exist)
         }
-    },[wishList])
+
+    },[wishList,product])
 
 
     function handleWishList(){

@@ -6,7 +6,7 @@ const cart = createReducer([], (builder) => {
             let product=action.payload
             let current_state=current(state)
             const exist=current_state.find((x)=>x.product.id===product.id)
-            if(exist){
+            if(!!exist){
                 return current_state.map(x=>
                     x.product.id===product.id?{...x,qty:x.qty+1}:x)
             }else{

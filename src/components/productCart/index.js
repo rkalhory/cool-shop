@@ -23,7 +23,7 @@ const ProductCart=({product}) => {
     useEffect(()=>{
         if(wishList.length){
             const exist=wishList.find((x)=>x.id===product.id)
-            setIsWish(exist)
+            setIsWish(!!exist)
         }
     },[wishList])
 
